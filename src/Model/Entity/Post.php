@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 
 /**
  * Post Entity
@@ -40,4 +41,14 @@ class Post extends Entity
         'modified' => true,
         'blog' => true,
     ];
+
+    protected function _getBodyHtml(): string
+    {
+        if (empty($this->body)) {
+            return '';
+        }
+
+        $converter = new GithubFlavoredMarkdownConverter();
+        return $converter->convert($this->body)->getContent();
+    }
 }

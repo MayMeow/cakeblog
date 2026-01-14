@@ -52,4 +52,6 @@
             </div>
         </div>
     </div>
+
+    <?= $post->body_html ?>
 </div>

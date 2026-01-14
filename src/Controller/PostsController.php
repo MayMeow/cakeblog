@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\View\RssView;
+use Cake\View\JsonView;
+
 /**
  * Posts Controller
  *
@@ -10,6 +13,12 @@ namespace App\Controller;
  */
 class PostsController extends AppController
 {
+    public function viewClasses(): array
+    {
+        return [JsonView::class, RssView::class];
+    }
+
+
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
@@ -35,6 +44,7 @@ class PostsController extends AppController
         $posts = $this->paginate($query);
 
         $this->set(compact('posts'));
+        $this->viewBuilder()->setOption('serialize', ['posts']);
     }
 
     /**
