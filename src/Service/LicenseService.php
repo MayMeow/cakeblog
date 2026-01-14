@@ -13,6 +13,7 @@ declare(strict_types=1);
  */
 namespace App\Service;
 
+use Cake\Cache\Cache;
 use Cake\Core\Configure;
 use MayMeow\License\License;
 use MayMeow\License\UnsignedArrayHelper;
@@ -27,17 +28,46 @@ class LicenseService
         246, 1, 121, 98, 21, 83, 131, 200, 2, 156, 88, 31, 143, 71, 96
     ];
 
-    public function isValid()
+    protected License $license;
+
+    public function getLicense(): License|false
     {
+        if (isset($this->license)) {
+            return $this->license;
+        }
+
         $license = Configure::read('License.key');
 
         if (empty($license)) {
             return false;
         }
 
-        $license = new License($this->applicationKey, $license);
-
-        return $license->isValid();
+        return new License($this->applicationKey, $license);
     }
 
+    public function isValid()
+    {
+        $license = $this->getLicense();
+
+        if ($license === false) {
+            return false;
+        }
+
+        return Cache::remember(
+            'e6353a36-ccb0-49be-8f15-320ff7e5496b',
+            fn () => $license->isValid(),
+            'default'
+        );
+    }
+
+    public function getLicenseData(): array
+    {
+        $license = $this->getLicense();
+
+        if ($license === false || !$license->isValid()) {
+            return [];
+        }
+
+        return $license->getLicenseDataArray();
+    }
 }

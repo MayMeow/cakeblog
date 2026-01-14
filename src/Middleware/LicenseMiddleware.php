@@ -41,7 +41,6 @@ class LicenseMiddleware implements MiddlewareInterface
 
     public function checkLicense(LicenseService $licenseService): bool
     {
-        // Implement license checking logic here
         return $licenseService->isValid();
     }
 }

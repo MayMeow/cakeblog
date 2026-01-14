@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AppController;
+use App\Service\LicenseService;
 
 /**
  * Blogs Controller
@@ -47,6 +48,11 @@ class BlogsController extends AppController
      */
     public function add()
     {
+        if (!$this->License->canCreateBlog(new LicenseService())) {
+            $this->Flash->error(__('You have reached the maximum number of blogs allowed by your license.'));
+            return $this->redirect(['action' => 'index']);
+        }
+        
         $blog = $this->Blogs->newEmptyEntity();
         if ($this->request->is('post')) {
             $blog = $this->Blogs->patchEntity($blog, $this->request->getData());
