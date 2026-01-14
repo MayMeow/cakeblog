@@ -42,6 +42,8 @@ class Post extends Entity
         'blog' => true,
     ];
 
+    protected array $_virtual = ['body_html'];
+
     protected function _getBodyHtml(): string
     {
         if (empty($this->body)) {

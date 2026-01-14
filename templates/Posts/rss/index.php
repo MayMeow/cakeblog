@@ -7,7 +7,8 @@
     <item>
         <title><?= h($post->title) ?></title>
         <link><?= $this->Url->build(['controller' => 'Posts', 'action' => 'view', $post->id], ['fullBase' => true]) ?></link>
-        <description><?= $post->body_html ?></description>
+        <description><?= h(strip_tags($this->Text->truncate($post->body_html, 400))) ?></description>
+        <content:encoded><![CDATA[<?= $post->body_html ?>]]></content:encoded>
         <pubDate><?= $post->created->format(DATE_RSS) ?></pubDate>
         <guid><?= $this->Url->build(['controller' => 'Posts', 'action' => 'view', $post->id], ['fullBase' => true]) ?></guid>
     </item>
