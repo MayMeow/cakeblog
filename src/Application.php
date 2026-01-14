@@ -17,6 +17,8 @@ declare(strict_types=1);
 namespace App;
 
 use App\Middleware\BlogDomainMiddleware;
+use App\Middleware\LicenseMiddleware;
+use App\Service\LicenseService;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Datasource\FactoryLocator;
@@ -82,6 +84,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // caching in production could improve performance.
             // See https://github.com/CakeDC/cakephp-cached-routing
             ->add(new BlogDomainMiddleware())
+            ->add(new LicenseMiddleware())
             ->add(new RoutingMiddleware($this))
 
             // Parse various types of encoded request bodies so that they are
@@ -111,6 +114,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
     {
         // Allow your Tables to be dependency injected
         //$container->delegate(new \Cake\ORM\Locator\TableContainer());
+        $container->add(LicenseService::class);
     }
 
     /**

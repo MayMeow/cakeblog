@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "aa435e4c76c3e364091279a234297eec",
+    "content-hash": "a5e9b4c45c19519fc41c4d48b4606e2a",
     "packages": [
         {
             "name": "cakephp/authentication",
@@ -938,6 +938,46 @@
                 }
             ],
             "time": "2025-05-28T07:37:56+00:00"
+        },
+        {
+            "name": "maymeow/license",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MayMeow/license.git",
+                "reference": "a4054e04ed7042df9254a7df55f0f5d116e5ebb6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MayMeow/license/zipball/a4054e04ed7042df9254a7df55f0f5d116e5ebb6",
+                "reference": "a4054e04ed7042df9254a7df55f0f5d116e5ebb6",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MayMeow\\License\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "May",
+                    "email": "php.maymeow.license@maymeow.mozmail.com",
+                    "homepage": "https://maymeow.com"
+                }
+            ],
+            "description": "License package for PHP apps",
+            "support": {
+                "docs": "https://github.com/MayMeow/license?tab=readme-ov-file#readme",
+                "issues": "https://github.com/maymeow/license/issues",
+                "source": "https://github.com/maymeow/license"
+            },
+            "time": "2026-01-14T20:14:08+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6643,7 +6683,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "maymeow/license": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
