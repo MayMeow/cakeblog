@@ -23,8 +23,15 @@ class PostsController extends AppController
      */
     public function index()
     {
+        $blogId = $this->request->getAttribute('currentBlog');
+
         $query = $this->Posts->find()
             ->contain(['Blogs']);
+
+        if ($blogId) {
+            $query->where(['Posts.blog_id' => $blogId]);
+        }
+        
         $posts = $this->paginate($query);
 
         $this->set(compact('posts'));

@@ -20,7 +20,7 @@ use Cake\ORM\Entity;
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Domain[] $domains
  */
-class Blog extends Entity
+class Blog extends Entity implements DomainInterface
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -42,4 +42,9 @@ class Blog extends Entity
         'posts' => true,
         'domains' => true,
     ];
+
+    public function getDomains(): array
+    {
+        return $this->domains ?? [];
+    }
 }

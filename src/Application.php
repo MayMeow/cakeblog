@@ -16,6 +16,7 @@ declare(strict_types=1);
  */
 namespace App;
 
+use App\Middleware\BlogDomainMiddleware;
 use Cake\Core\Configure;
 use Cake\Core\ContainerInterface;
 use Cake\Datasource\FactoryLocator;
@@ -80,6 +81,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // If you have a large number of routes connected, turning on routes
             // caching in production could improve performance.
             // See https://github.com/CakeDC/cakephp-cached-routing
+            ->add(new BlogDomainMiddleware())
             ->add(new RoutingMiddleware($this))
 
             // Parse various types of encoded request bodies so that they are
