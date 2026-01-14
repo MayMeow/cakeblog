@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AppController;
+use Cake\Utility\Security;
 
 /**
  * Domains Controller
@@ -36,7 +37,9 @@ class DomainsController extends AppController
     public function view($id = null)
     {
         $domain = $this->Domains->get($id, contain: ['Blogs']);
-        $this->set(compact('domain'));
+        $hash = Security::hash($domain->domain, 'sha256', 'salt');
+        
+        $this->set(compact('domain', 'hash'));
     }
 
     /**

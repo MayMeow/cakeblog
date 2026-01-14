@@ -47,6 +47,7 @@
             <?= $this->Html->link('Dashboard', ['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index']) ?>
             <?= $this->Html->link('Blogs', ['prefix' => 'Admin', 'controller' => 'Blogs', 'action' => 'index']) ?>
             <?= $this->Html->link('Posts', ['prefix' => 'Admin', 'controller' => 'Posts', 'action' => 'index']) ?>
+            <?= $this->Html->link('Domains', ['prefix' => 'Admin', 'controller' => 'Domains', 'action' => 'index']) ?>
             <span style="float: right;">
                 <?= $this->Html->link('View Site', ['prefix' => false, 'controller' => 'Blogs', 'action' => 'index'], ['target' => '_blank']) ?>
                 <?= $this->Html->link('Logout', ['prefix' => false, 'controller' => 'Users', 'action' => 'logout']) ?>
