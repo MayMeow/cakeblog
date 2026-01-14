@@ -13,6 +13,10 @@ declare(strict_types=1);
  */
 namespace App\Service;
 
+use Cake\Core\Configure;
+use MayMeow\License\License;
+use MayMeow\License\UnsignedArrayHelper;
+
 class LicenseService
 {
     protected array $applicationKey = [
@@ -25,7 +29,15 @@ class LicenseService
 
     public function isValid()
     {
-        return true;
+        $license = Configure::read('License.key');
+
+        if (empty($license)) {
+            return false;
+        }
+
+        $license = new License($this->applicationKey, $license);
+
+        return $license->isValid();
     }
 
 }
