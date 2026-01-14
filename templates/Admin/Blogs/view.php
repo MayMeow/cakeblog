@@ -91,6 +91,14 @@
                         </table>
                     </div>
                 <?php endif; ?>
+                <h4><?= __('Related Domains') ?></h4>
+                <?php if (!empty($blog->domains)): ?>
+                    <ul>
+                        <?php foreach ($blog->domains as $domain): ?>
+                            <li><?= h($domain->domain) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
             </div>
         </div>
     </div>

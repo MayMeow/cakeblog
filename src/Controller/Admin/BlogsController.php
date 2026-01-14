@@ -35,7 +35,7 @@ class BlogsController extends AppController
      */
     public function view($id = null)
     {
-        $blog = $this->Blogs->get($id, contain: ['Users', 'Posts']);
+        $blog = $this->Blogs->get($id, contain: ['Users', 'Posts', 'Domains']);
         $this->set(compact('blog'));
     }
 

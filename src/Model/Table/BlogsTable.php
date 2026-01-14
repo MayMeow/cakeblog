@@ -55,6 +55,9 @@ class BlogsTable extends Table
         $this->hasMany('Posts', [
             'foreignKey' => 'blog_id',
         ]);
+        $this->hasMany('Domains', [
+            'foreignKey' => 'blog_id',
+        ]);
     }
 
     /**
