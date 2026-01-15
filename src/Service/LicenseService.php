@@ -20,6 +20,8 @@ use MayMeow\License\UnsignedArrayHelper;
 
 class LicenseService
 {
+    private const CACHE_KEY = 'e6353a36-ccb0-49be-8f15-320ff7e5496b';
+
     protected array $applicationKey = [
         48, 89, 48, 19, 6, 7, 42, 134, 72, 206, 61, 2, 1, 6, 8, 42, 134, 72, 206, 61,
         3, 1, 7, 3, 66, 0, 4, 251, 128, 214, 59, 121, 225, 237, 113, 119, 201, 76, 106,
@@ -45,7 +47,7 @@ class LicenseService
         return new License($this->applicationKey, $license);
     }
 
-    public function isValid()
+    public function isValid(): bool
     {
         $license = $this->getLicense();
 
@@ -54,7 +56,7 @@ class LicenseService
         }
 
         return Cache::remember(
-            'e6353a36-ccb0-49be-8f15-320ff7e5496b',
+            self::CACHE_KEY,
             fn () => $license->isValid(),
             'default'
         );

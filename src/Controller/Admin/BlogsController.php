@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AppController;
-use App\Service\LicenseService;
 
 /**
  * Blogs Controller
@@ -48,7 +47,7 @@ class BlogsController extends AppController
      */
     public function add()
     {
-        if (!$this->License->canCreateBlog(new LicenseService())) {
+        if (!$this->License->canCreateBlog()) {
             $this->Flash->error(__('You have reached the maximum number of blogs allowed by your license.'));
             return $this->redirect(['action' => 'index']);
         }

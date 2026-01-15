@@ -19,13 +19,28 @@ class LicenseComponent extends Component
      */
     protected array $_defaultConfig = [];
 
-    public function canCreateBlog(LicenseService $licenseService): bool
+    /**
+     * Constructor
+     *
+     * @param \Cake\Controller\ComponentRegistry $registry The component registry.
+     * @param array $config The component config
+     * @param \App\Service\LicenseService $licenseService License service
+     */
+    public function __construct(
+        ComponentRegistry $registry,
+        array $config,
+        protected LicenseService $licenseService
+    ) {
+        parent::__construct($registry, $config);
+    }
+
+    public function canCreateBlog(): bool
     {
         // default blogs count
         $defaultBlogCount = 1;
 
         // check license for blogs count
-        $license = $licenseService->getLicense();
+        $license = $this->licenseService->getLicense();
         if ($license !== false) {
             $licensedBlogsCount = $license->getFeatureValue('blogs');
 

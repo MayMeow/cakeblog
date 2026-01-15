@@ -35,6 +35,7 @@ use Authentication\AuthenticationService;
 use Authentication\AuthenticationServiceInterface;
 use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
+use League\Container\ReflectionContainer;
 use Psr\Http\Message\ServerRequestInterface;
 
 /**
@@ -84,7 +85,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // caching in production could improve performance.
             // See https://github.com/CakeDC/cakephp-cached-routing
             ->add(new BlogDomainMiddleware())
-            ->add(new LicenseMiddleware())
+            ->add(LicenseMiddleware::class)
             ->add(new RoutingMiddleware($this))
 
             // Parse various types of encoded request bodies so that they are
@@ -114,6 +115,9 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
     {
         // Allow your Tables to be dependency injected
         //$container->delegate(new \Cake\ORM\Locator\TableContainer());
+        $container->delegate(
+            new ReflectionContainer(true)
+        );
         $container->add(LicenseService::class);
     }
 

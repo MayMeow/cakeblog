@@ -19,13 +19,20 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-use function Cake\Error\dd;
-
 /**
  * License middleware
  */
 class LicenseMiddleware implements MiddlewareInterface
 {
+    /**
+     * Constructor
+     *
+     * @param \App\Service\LicenseService $licenseService License service
+     */
+    public function __construct(protected LicenseService $licenseService)
+    {
+    }
+
     /**
      * Process method.
      *
@@ -35,12 +42,8 @@ class LicenseMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $request = $request->withAttribute('hasValidLicense', $this->checkLicense(new LicenseService()));
-        return $handler->handle($request);
-    }
+        $request = $request->withAttribute('hasValidLicense', $this->licenseService->isValid());
 
-    public function checkLicense(LicenseService $licenseService): bool
-    {
-        return $licenseService->isValid();
+        return $handler->handle($request);
     }
 }
