@@ -1,58 +1,63 @@
-# CakePHP Application Skeleton
+\# CakeBlog
 
-![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=5.x)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+CakeBlog is a CakePHP-based multi-blog application with posts, users, and optional domain-based blog routing. It includes admin tooling, RSS output, and a Docker setup for local development.
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 5.x.
+\## Features
+- Multi-blog support with posts and users
+- Admin panel for managing blogs, posts, and domains
+- RSS feed output
+- Domain-based blog routing via middleware
+- Dockerized development environment
+- SQLite and MySQL-ready configuration examples
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+\## Requirements
+- PHP 8.1+ (or compatible with the project’s CakePHP version)
+- Composer 2
+- A database (SQLite/MySQL)
+- Optional: Docker + Docker Compose
 
-## Installation
+\## Quick start (local)
+1. Install dependencies:
+	- `composer install`
+2. Copy the local config and adjust DB settings:
+	- Copy [config/app_local.example.php](config/app_local.example.php) to [config/app_local.php](config/app_local.php)
+3. Run migrations and seed data:
+	- `bin/cake migrations migrate`
+	- `bin/cake migrations seed`
+4. Start the dev server:
+	- `bin/cake server`
+5. Open http://localhost:8765
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+\## Quick start (Docker)
+1. Build and start containers:
+	- `docker compose up --build`
+2. Run migrations inside the container:
+	- `docker compose exec app bin/cake migrations migrate`
+	- `docker compose exec app bin/cake migrations seed`
+3. Open the app at the container’s exposed port.
 
-If Composer is installed globally, run
+\## Configuration
+- Base configuration: [config/app.php](config/app.php)
+- Local overrides: [config/app_local.php](config/app_local.php)
+- Routes: [config/routes.php](config/routes.php)
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+\## Database
+Migrations are located in [config/Migrations](config/Migrations). Seed data is in [config/Seeds](config/Seeds). Example SQLite configuration is provided in [config/app_sqlite.php](config/app_sqlite.php).
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+\## Admin area
+Admin templates live under [templates/Admin](templates/Admin). Controllers are in [src/Controller/Admin](src/Controller/Admin).
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+\## RSS
+RSS templates are in [templates/Posts/rss](templates/Posts/rss) and view classes in [src/View](src/View).
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+\## Testing
+Run the test suite with:
+- `vendor/bin/phpunit`
 
-```bash
-bin/cake server -p 8765
-```
+\## Linting & Static Analysis
+- PHP_CodeSniffer: `vendor/bin/phpcs`
+- PHPStan: `vendor/bin/phpstan analyse`
+- Psalm: `vendor/bin/psalm`
 
-Then visit `http://localhost:8765` to see the welcome page.
-
-## Demo app
-
-Check out the [5.x-demo branch](https://github.com/cakephp/app/tree/5.x-demo), which contains demo migrations and a seeder.
-See the [README](https://github.com/cakephp/app/blob/5.x-demo/README.md) on how to get it running.
-
-## Update
-
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
-
-## Configuration
-
-Read and edit the environment specific `config/app_local.php` and set up the
-`'Datasources'` and any other configuration relevant for your application.
-Other environment agnostic settings can be changed in `config/app.php`.
-
-## Layout
-
-The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+\## License
+See [LICENSE](LICENSE) and [LICENSE-COMMERCIAL](LICENSE-COMMERCIAL).
