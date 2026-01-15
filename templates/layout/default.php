@@ -22,8 +22,10 @@ $cakeDescription = 'My Blog';
 
 <body>
     <header>
-        <div class="title">
-            <h1><a href="<?= $this->Url->build('/') ?>">My Blog</a></h1>
+        <div class="header">
+            <a class="title" href="<?= $this->Url->build('/') ?>">
+                <h2><?= $this->Blog->getTitle() ?></h2>
+            </a>
         </div>
         <nav>
             <a href="<?= $this->Url->build('/') ?>">Home</a>
@@ -35,7 +37,7 @@ $cakeDescription = 'My Blog';
         <?= $this->fetch('content') ?>
     </main>
     <footer>
-        Link to source code?
+        Made with ❤️ by <a href="https://catgirl.sk">MayMeow</a> &copy; <?= date('Y') ?>
     </footer>
 </body>
 

@@ -461,4 +461,8 @@ return [
         'errorLevel' => null,
         'fixtureStrategy' => null,
     ],
+
+    'CakeBlog' => [
+        'title' => 'My Blog',
+    ]
 ];

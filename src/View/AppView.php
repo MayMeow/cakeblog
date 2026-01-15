@@ -23,6 +23,7 @@ use Cake\View\View;
  * Your application's default view class
  *
  * @link https://book.cakephp.org/5/en/views.html#the-app-view
+ * @property App\View\Helper\BlogHelper $Blog
  */
 class AppView extends View
 {
@@ -37,5 +38,6 @@ class AppView extends View
      */
     public function initialize(): void
     {
+        $this->loadHelper('Blog');
     }
 }

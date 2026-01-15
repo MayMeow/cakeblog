@@ -40,6 +40,8 @@ class PostsController extends AppController
         if ($blogId) {
             $query->where(['Posts.blog_id' => $blogId]);
         }
+
+        $query->orderBy(['Posts.created' => 'DESC']);
         
         $posts = $this->paginate($query);
 
