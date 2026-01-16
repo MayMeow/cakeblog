@@ -67,7 +67,8 @@ class BlogsController extends AppController
             $this->Flash->error(__('The blog could not be saved. Please, try again.'));
         }
         $users = $this->Blogs->Users->find('list', limit: 200)->all();
-        $this->set(compact('blog', 'users'));
+        $colors = AccentColor::cases();
+        $this->set(compact('blog', 'users', 'colors'));
     }
 
     /**

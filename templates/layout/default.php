@@ -4,8 +4,7 @@ $cakeDescription = 'My Blog';
 $this->start('css');
 ?>
 <style>
-    :root { --link-color: oklch(85.2% 0.199 91.936); }
-    @media (prefers-color-scheme: dark) { :root { --link-color: oklch(85.2% 0.199 91.936); } }
+<?= $this->Blog->getAccentColor() ?>
 </style>
 <?php
 $this->end();

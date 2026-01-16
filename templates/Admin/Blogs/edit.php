@@ -27,31 +27,13 @@
                     echo $this->Form->control('description');
                     echo $this->Form->control('slug');
                     echo $this->Form->control('user_id', ['options' => $users]);
-                    /*echo $this->Form->control('accent_color', [
-                        'options' => array_map(fn($case) => $case->name, $colors),
-                        'empty' => '-- Select Color --'
-                    ]);*/
-
-                    // radio buttons example
-                    $colorOptions = [];
-                    foreach ($colors as $case) {
-                        $colorOptions[$case->name] = sprintf(
-                            '<span style="display:inline-block;width:1rem;height:1rem;border-radius:10%%;margin-right:0.4rem;vertical-align:middle;background:%s;border:1px solid #ccc;"></span>%s',
-                            $case->value,
-                            h($case->name)
-                        );
-                    }
-
-                    echo $this->Form->control('accent_color', [
-                        'type' => 'radio',
-                        'options' => $colorOptions,
-                        'label' => 'Color',
-                        'escape' => false
-                    ]);
                 ?>
+                <?= $this->element('custom/blogs_accent_selector') ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
         </div>
     </div>
 </div>
+
+

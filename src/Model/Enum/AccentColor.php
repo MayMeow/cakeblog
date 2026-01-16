@@ -22,4 +22,15 @@ enum AccentColor: string
     case Fuchsia = 'oklch(74% 0.238 322.16)';
     case Pink = 'oklch(71.8% 0.202 349.761)';
     case Rose = 'oklch(71.2% 0.194 13.428)';
+
+    public static function fromName(string $name, self $fallback = self::Blue): self
+    {
+        foreach (self::cases() as $case) {
+            if ($case->name === $name) {
+                return $case;
+            }
+        }
+        
+        return $fallback;
+    }
 }
