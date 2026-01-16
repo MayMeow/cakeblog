@@ -3,8 +3,8 @@ services:
     build: .
     restart: always
     image: cakeblog-local-prod:latest
-    # ports:
-    #  - "8000:80"
+    ports:
+      - "8765:80"
     environment:
       - DEBUG=false
       - DATABASE_URL=sqlite:////var/www/html/db/database.sqlite
