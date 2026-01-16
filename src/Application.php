@@ -35,6 +35,7 @@ use Authentication\AuthenticationService;
 use Authentication\AuthenticationServiceInterface;
 use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
+use Cake\Routing\Router;
 use League\Container\ReflectionContainer;
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -138,7 +139,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
     public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
     {
         $service = new AuthenticationService([
-            'unauthenticatedRedirect' => '/users/login',
+            'unauthenticatedRedirect' => Router::url('/users/login'),
             'queryParam' => 'redirect',
         ]);
 
@@ -151,12 +152,12 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $service->loadAuthenticator('Authentication.Session');
         $service->loadAuthenticator('Authentication.Form', [
             'fields' => $fields,
-            'loginUrl' => '/users/login',
-        ]);
-
-        // Load identifiers
-        $service->loadIdentifier('Authentication.Password', [
-            'fields' => $fields,
+            'loginUrl' => Router::url('/users/login'),
+            'identifier' => [
+                'Authentication.Password' => [
+                    'fields' => $fields
+                ],
+            ],
         ]);
 
         return $service;
