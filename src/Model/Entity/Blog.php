@@ -13,6 +13,7 @@ use Cake\ORM\Entity;
  * @property string|null $description
  * @property string $slug
  * @property int $user_id
+ * @property string $accent_color
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
@@ -41,6 +42,7 @@ class Blog extends Entity implements DomainInterface
         'user' => true,
         'posts' => true,
         'domains' => true,
+        'accent_color' => true,
     ];
 
     public function getDomains(): array

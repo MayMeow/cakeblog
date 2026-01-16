@@ -23,6 +23,7 @@
                     echo $this->Form->control('slug');
                     echo $this->Form->control('user_id', ['options' => $users]);
                 ?>
+                <?= $this->element('custom/blogs_accent_selector') ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
