@@ -28,7 +28,8 @@ RUN composer install --no-dev --optimize-autoloader
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/tmp \
-    && chmod -R 775 /var/www/html/logs
+    && chmod -R 775 /var/www/html/logs \
+    && chmod +x bin/cake
 
 # Expose port 80
 EXPOSE 80
