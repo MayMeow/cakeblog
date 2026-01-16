@@ -1,9 +1,10 @@
 #!/bin/bash
 set -e
 
-# Ensure db directory exists and has correct permissions
-mkdir -p db
+# Ensure db/tmp/logs directories exist and are writable
+mkdir -p db tmp logs
 chown -R www-data:www-data tmp logs db
+chmod -R 777 tmp logs
 
 # Clear cache
 bin/cake cache clear_all
