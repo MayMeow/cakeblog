@@ -1,0 +1,79 @@
+<html>
+    <style>
+.color-group {
+  display: flex;
+  gap: 8px;
+}
+
+.color-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.color-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.swatch {
+  width: 20px;
+  height: 20px;
+  background: var(--c);
+  border-radius: 4px;
+  border: 2px solid transparent;
+  display: inline-block;
+}
+
+/* selected */
+.color-option input:checked + .swatch {
+  border-color: #000;
+}
+
+/* keyboard focus */
+.color-option input:focus-visible + .swatch {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+
+    </style>
+    <body style="background-color: oklch(20.8% 0.042 265.755);">
+        <div class="color-group">
+            <label class="color-option">
+                <input type="radio" name="color" value="green">
+                <span class="swatch" style="--c:oklch(57.7% 0.245 27.325)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="blue">
+                <span class="swatch" style="--c:oklch(70.5% 0.213 47.604)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="red">
+                <span class="swatch" style="--c:oklch(76.9% 0.188 70.08)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="red">
+                <span class="swatch" style="--c:oklch(79.5% 0.184 86.047)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="red">
+                <span class="swatch" style="--c:oklch(76.8% 0.233 130.85)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="red">
+                <span class="swatch" style="--c:oklch(69.6% 0.17 162.48)"></span>
+            </label>
+
+            <label class="color-option">
+                <input type="radio" name="color" value="red">
+                <span class="swatch" style="--c:oklch(70.4% 0.14 182.503)"></span>
+            </label>
+        </div>
+    </body>
+</html>

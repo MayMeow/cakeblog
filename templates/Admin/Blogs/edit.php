@@ -27,6 +27,17 @@
                     echo $this->Form->control('description');
                     echo $this->Form->control('slug');
                     echo $this->Form->control('user_id', ['options' => $users]);
+                    /*echo $this->Form->control('accent_color', [
+                        'options' => array_map(fn($case) => $case->name, $colors),
+                        'empty' => '-- Select Color --'
+                    ]);*/
+
+                    // radio buttons example
+                    echo $this->Form->control('accent_color', [
+                        'type' => 'radio',
+                        'options' => array_map(fn($case) => $case->name, $colors),
+                        'label' => 'Color'
+                    ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

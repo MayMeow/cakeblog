@@ -14,9 +14,9 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --background-color: #1e1e2e;
-        --heading-color: #eff1f5;
-        --text-color: #eff1f5;
+        --background-color: oklch(20.8% 0.042 265.755);
+        --heading-color: oklch(92.2% 0 0);
+        --text-color: oklch(92.2% 0 0);
         --link-color: #89b4fa;
         --visited-color: #cba6f7;
         --blockquote-color: #7f849c;
