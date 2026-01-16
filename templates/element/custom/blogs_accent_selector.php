@@ -1,6 +1,9 @@
 <?php
 echo $this->Form->label('accent_color', 'Color');
-$selectedColor = $blog->accent_color ?? '';
+$selectedColor = \App\Model\Enum\AccentColor::fromName(
+    name: (string)($blog->accent_color ?? \Cake\Core\Configure::read('CakeBlog.accent') ?? ''),
+    fallback: \App\Model\Enum\AccentColor::Blue
+)->name;
 echo '<div class="color-group">';
 foreach ($colors as $case) {
     $id = 'accent-color-' . strtolower($case->name);

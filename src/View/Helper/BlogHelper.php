@@ -61,10 +61,9 @@ class BlogHelper extends Helper
         $style = ":root { --link-color: %1\$s; }\n" .
             "@media (prefers-color-scheme: dark) { :root { --link-color: %1\$s; } }";
 
-        // TODO not implemented
-        // if ($blog && !empty($blog->accent_color)) {
-            // $blogAccentColor = AccentColor::tryFrom($blog->accent_color);
-        // }
+        if ($blog && !empty($blog->accent_color)) {
+            $blogAccentColorEnum = AccentColor::fromName($blog->accent_color);
+        }
 
         if (!$blogAccentColorEnum) {
             $blogAccentColorEnum = AccentColor::fromName(
