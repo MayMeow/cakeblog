@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      - DEBUG=false
+      - DATABASE_URL=sqlite:////var/www/html/db/database.sqlite
+    volumes:
+      - ./db:/var/www/html/db
+      - ./logs:/var/www/html/logs
+      - ./tmp:/var/www/html/tmp
