@@ -89,6 +89,11 @@ class BlogsTable extends Table
             ->integer('user_id')
             ->notEmptyString('user_id');
 
+        $validator
+            ->scalar('accent_color')
+            ->maxLength('accent_color', 50)
+            ->notEmptyString('accent_color');
+
         return $validator;
     }
 

@@ -13,6 +13,7 @@ use Cake\Utility\Security;
  */
 class DomainsController extends AppController
 {
+    // todo add domain verification logic, show verified badge on blog when domain is verified
     /**
      * Index method
      *
