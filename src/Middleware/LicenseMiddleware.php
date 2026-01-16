@@ -42,7 +42,13 @@ class LicenseMiddleware implements MiddlewareInterface
      */
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $request = $request->withAttribute('hasValidLicense', $this->licenseService->isValid());
+        try {
+            $hasValidLicense = $this->licenseService->isValid();
+        } catch (\Throwable $exception) {
+            $hasValidLicense = false;
+        }
+
+        $request = $request->withAttribute('hasValidLicense', $hasValidLicense);
 
         return $handler->handle($request);
     }

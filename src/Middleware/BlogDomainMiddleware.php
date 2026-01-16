@@ -25,14 +25,18 @@ class BlogDomainMiddleware implements MiddlewareInterface
     {
         $host = $request->getUri()->getHost();
 
-        $domainTable = TableRegistry::getTableLocator()->get('Domains');
-        $domain = $domainTable->find()
-            ->where(['domain' => $host])
-            ->contain(['Blogs'])
-            ->first();
+        try {
+            $domainTable = TableRegistry::getTableLocator()->get('Domains');
+            $domain = $domainTable->find()
+                ->where(['domain' => $host])
+                ->contain(['Blogs'])
+                ->first();
 
-        if ($domain) {
-            $request = $request->withAttribute('currentBlog', $domain->get('blog')->id);
+            if ($domain) {
+                $request = $request->withAttribute('currentBlog', $domain->get('blog')->id);
+            }
+        } catch (\Throwable $exception) {
+            // If database is not ready, continue without a bound blog.
         }
 
         return $handler->handle($request);

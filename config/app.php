@@ -104,6 +104,13 @@ return [
             'url' => env('CACHE_DEFAULT_URL', null),
         ],
 
+        'long_term' => [
+            'className' => FileEngine::class,
+            'path' => CACHE . 'long_term' . DS,
+            'duration' => '+1 year',
+            'url' => env('CACHE_LONGTERM_URL', null),
+        ],
+
         /*
          * Configure the cache used for general framework caching.
          * Translation cache files are stored with this configuration.

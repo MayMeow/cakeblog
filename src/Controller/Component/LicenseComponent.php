@@ -40,13 +40,17 @@ class LicenseComponent extends Component
         $defaultBlogCount = 1;
 
         // check license for blogs count
-        $license = $this->licenseService->getLicense();
-        if ($license !== false) {
-            $licensedBlogsCount = $license->getFeatureValue('blogs');
+        try {
+            $license = $this->licenseService->getLicense();
+            if ($license !== false) {
+                $licensedBlogsCount = $license->getFeatureValue('blogs');
 
-            if (is_int($licensedBlogsCount)) {
-                $defaultBlogCount = $licensedBlogsCount;
+                if (is_int($licensedBlogsCount)) {
+                    $defaultBlogCount = $licensedBlogsCount;
+                }
             }
+        } catch (\Throwable $exception) {
+            // If license parsing fails, fall back to default limits.
         }
 
         // Get current blogs count
