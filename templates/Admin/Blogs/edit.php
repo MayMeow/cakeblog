@@ -36,7 +36,7 @@
                     $colorOptions = [];
                     foreach ($colors as $case) {
                         $colorOptions[$case->name] = sprintf(
-                            '<span style="display:inline-block;width:0.9rem;height:0.9rem;border-radius:10%%;margin-right:0.4rem;vertical-align:middle;background:%s;border:1px solid #ccc;"></span>%s',
+                            '<span style="display:inline-block;width:1rem;height:1rem;border-radius:10%%;margin-right:0.4rem;vertical-align:middle;background:%s;border:1px solid #ccc;"></span>%s',
                             $case->value,
                             h($case->name)
                         );
