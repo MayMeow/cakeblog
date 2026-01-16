@@ -7,6 +7,7 @@ use App\Controller\Admin\AppController;
 
 class DashboardController extends AppController
 {
+    // todo implement verification of what domain can be used to login to admin panel. (define in settings?)
     public function index()
     {
         $this->set('title', 'Admin Dashboard');
