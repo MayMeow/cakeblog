@@ -46,6 +46,7 @@ $this->end();
     </main>
     <footer>
         Made with ❤️ by <a href="https://catgirl.sk">MayMeow</a> &copy; <?= date('Y') ?>
+        <?= $this->fetch('footer') ?>
     </footer>
 </body>
 
