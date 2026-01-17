@@ -45,8 +45,11 @@ $this->end();
         <?= $this->fetch('content') ?>
     </main>
     <footer>
-        Made with ❤️ by <a href="https://catgirl.sk">MayMeow</a> &copy; <?= date('Y') ?>
-        <?= $this->fetch('footer') ?>
+        <div style="margin-bottom: 1rem;">
+            <?= $this->fetch('footer') ?>
+            &copy; <?= date('Y') ?>
+        </div>
+        Powered by <a href="https://github.com/MayMeow/cakeblog">Sprinkle</a> 🧁
     </footer>
 </body>
 
