@@ -16,6 +16,7 @@ namespace App\Controller\Component;
 use App\Service\LicenseService;
 use Cake\Controller\Component;
 use Cake\Controller\ComponentRegistry;
+use MayMeow\License\License;
 
 /**
  * License component
@@ -68,5 +69,10 @@ class LicenseComponent extends Component
         $currentBlogsCount = $blogsTable->find()->count();
 
         return $currentBlogsCount < $defaultBlogCount;
+    }
+
+    public function getLicenseData(): array
+    {
+        return $this->licenseService->getLicenseData();
     }
 }

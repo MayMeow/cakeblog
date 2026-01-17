@@ -15,7 +15,8 @@ class DashboardController extends AppController
         $blogsCount = $this->fetchTable('Blogs')->find()->count();
         $postsCount = $this->fetchTable('Posts')->find()->count();
         $usersCount = $this->fetchTable('Users')->find()->count();
+        $hasValidLicense = $this->request->getAttribute('hasValidLicense', false);
 
-        $this->set(compact('blogsCount', 'postsCount', 'usersCount'));
+        $this->set(compact('blogsCount', 'postsCount', 'usersCount', 'hasValidLicense'));
     }
 }

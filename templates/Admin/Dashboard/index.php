@@ -39,6 +39,13 @@
                     <?= $this->Html->link('Manage Posts', ['controller' => 'Posts', 'action' => 'index']) ?>
                 </li>
             </ul>
+            <?php if ($hasValidLicense): ?>
+                <p style="color: oklch(62.7% 0.194 149.214); font-weight: bold;">🎉 This blog has a valid license.</p>
+            <?php else: ?>
+                <p style="color: oklch(70.4% 0.04 256.788);">
+                    &#8505;&#65039; You are using the free version of blog.
+                </p>
+            <?php endif; ?>
         </div>
     </div>
 </div>

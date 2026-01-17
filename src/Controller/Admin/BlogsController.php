@@ -20,11 +20,13 @@ class BlogsController extends AppController
      */
     public function index()
     {
+        $allowedBlogsCount = $this->License->getLicenseData()['features']['blogs'] ?? 1;
+        
         $query = $this->Blogs->find()
             ->contain(['Users']);
         $blogs = $this->paginate($query);
 
-        $this->set(compact('blogs'));
+        $this->set(compact('blogs', 'allowedBlogsCount'));
     }
 
     /**

@@ -7,6 +7,9 @@
 <div class="blogs index content">
     <?= $this->Html->link(__('New Blog'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Blogs') ?></h3>
+    <div>
+        &#8505;&#65039; <?= __('You are allowed to create up to {0} blogs.', $allowedBlogsCount) ?>
+    </div>
     <div class="table-responsive">
         <table>
             <thead>
