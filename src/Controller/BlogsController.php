@@ -23,7 +23,7 @@ class BlogsController extends AppController
      */
     public function index()
     {
-        $query = $this->Blogs->find()
+        $query = $this->Blogs->find('public')
             ->contain(['Users']);
         $blogs = $this->paginate($query);
 

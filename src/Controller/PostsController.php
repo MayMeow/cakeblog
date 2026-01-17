@@ -32,8 +32,6 @@ class PostsController extends AppController
      */
     public function index()
     {
-        // TODO Allow pinning posts
-        // Pined posts sould appear in ne menu (as a page) and not show among all posts on index page by default
         $currentBlog = $this->request->getAttribute('currentBlog');
 
         $query = $this->Posts->find('published')

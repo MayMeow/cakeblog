@@ -115,4 +115,9 @@ class BlogsTable extends Table
 
         return $rules;
     }
+
+    public function findPublic(SelectQuery $query, array $options): SelectQuery
+    {
+        return $query->where(['Blogs.is_public' => true]);
+    }
 }
