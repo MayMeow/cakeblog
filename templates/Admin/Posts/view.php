@@ -46,6 +46,10 @@
                     <th><?= __('Published') ?></th>
                     <td><?= $post->published ? __('Yes') : __('No'); ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Pinned') ?></th>
+                    <td><?= $post->pinned ? __('Yes') : __('No'); ?></td>
+                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Body') ?></strong>

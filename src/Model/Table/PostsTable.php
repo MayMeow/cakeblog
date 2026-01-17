@@ -82,8 +82,8 @@ class PostsTable extends Table
             ->notEmptyString('published');
 
         $validator
-            ->boolean('is_pinned')
-            ->notEmptyString('is_pinned');
+            ->boolean('pinned')
+            ->notEmptyString('pinned');
 
         $validator
             ->integer('blog_id')

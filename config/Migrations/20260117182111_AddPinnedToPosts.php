@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\BaseMigration;
 
-class AddIsPinnedToPosts extends BaseMigration
+class AddPinnedToPosts extends BaseMigration
 {
     /**
      * Change Method.
@@ -16,7 +16,7 @@ class AddIsPinnedToPosts extends BaseMigration
     public function change(): void
     {
         $table = $this->table('posts');
-        $table->addColumn('is_pinned', 'boolean', [
+        $table->addColumn('pinned', 'boolean', [
             'default' => false,
             'null' => false,
         ]);
