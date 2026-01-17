@@ -43,6 +43,10 @@
                     <th><?= __('Modified') ?></th>
                     <td><?= h($blog->modified) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Public') ?></th>
+                    <td><?= $blog->is_public ? __('Yes') : __('No'); ?></td>
+                </tr>
             </table>
             <div class="text">
                 <strong><?= __('Description') ?></strong>

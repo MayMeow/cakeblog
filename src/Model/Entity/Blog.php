@@ -14,6 +14,7 @@ use Cake\ORM\Entity;
  * @property string $slug
  * @property int $user_id
  * @property string $accent_color
+ * @property bool $is_public
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
@@ -43,6 +44,7 @@ class Blog extends Entity implements DomainInterface
         'posts' => true,
         'domains' => true,
         'accent_color' => true,
+        'is_public' => true,
     ];
 
     public function getDomains(): array

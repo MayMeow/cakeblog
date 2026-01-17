@@ -42,6 +42,10 @@ class PostsController extends AppController
         if ($blogId) {
             $query->where(['Posts.blog_id' => $blogId]);
             $query->where(['Posts.pinned' => false]);
+        } else {
+            $query->innerJoinWith('Blogs', function ($q) {
+                return $q->where(['Blogs.is_public' => true]);
+            });
         }
         
         $posts = $this->paginate($query);

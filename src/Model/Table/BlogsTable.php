@@ -94,6 +94,10 @@ class BlogsTable extends Table
             ->maxLength('accent_color', 50)
             ->notEmptyString('accent_color');
 
+        $validator
+            ->boolean('is_public')
+            ->notEmptyString('is_public');
+
         return $validator;
     }
 
