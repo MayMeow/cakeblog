@@ -9,45 +9,21 @@
 
     <h3><?= __('Blogs') ?></h3>
     <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('title') ?></th>
-                    <th><?= $this->Paginator->sort('slug') ?></th>
-                    <th><?= $this->Paginator->sort('user_id') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($blogs as $blog): ?>
-                    <tr>
-                        <td><?= $this->Number->format($blog->id) ?></td>
-                        <td><?= h($blog->title) ?></td>
-                        <td><?= h($blog->slug) ?></td>
-                        <td><?= $blog->hasValue('user') ? $this->Html->link($blog->user->username, ['controller' => 'Users', 'action' => 'view', $blog->user->id]) : '' ?>
-                        </td>
-                        <td><?= h($blog->created) ?></td>
-                        <td><?= h($blog->modified) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $blog->id]) ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+        <ul>
+            <?php foreach ($blogs as $blog): ?>
+                <li>
+                    <?= $this->Html->link(h($blog->title), ['action' => 'view', $blog->id]) ?>
+                    <?= $blog->description ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <div class="paginator">
         <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
+            <?= $this->Paginator->prev('⬅️' . __('previous')) ?>
+            <?= $this->Paginator->next('➡️' . __('next')) ?>
         </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?>
+        <p><?= $this->Paginator->counter(__('There are {{count}} blogs total')) ?>
         </p>
     </div>
 </div>
