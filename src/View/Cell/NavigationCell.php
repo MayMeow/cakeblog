@@ -35,6 +35,14 @@ class NavigationCell extends Cell
     public function display()
     {
         $currentBlog = $this->request->getAttribute('currentBlog');
-        $this->set('currentBlog', $currentBlog);
+        $pinnedPosts = [];
+
+        if ($currentBlog) {
+            $pinnedPosts = $this->fetchTable('Posts')
+                ->find('pinned')
+                ->where(['blog_id' => $currentBlog]);
+        }
+
+        $this->set(compact('pinnedPosts', 'currentBlog'));
     }
 }

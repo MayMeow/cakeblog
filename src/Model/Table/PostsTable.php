@@ -106,4 +106,17 @@ class PostsTable extends Table
 
         return $rules;
     }
+
+    public function findPinned(SelectQuery $query, array $options): SelectQuery
+    {
+        return $query->where(['Posts.published' => true])
+            ->where(['Posts.pinned' => true])
+            ->orderBy(['Posts.title' => 'ASC']);
+    }
+
+    public function findPublished(SelectQuery $query, array $options): SelectQuery
+    {
+        return $query->where(['Posts.published' => true])
+            ->orderBy(['Posts.created' => 'DESC']);
+    }
 }

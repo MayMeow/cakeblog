@@ -36,14 +36,13 @@ class PostsController extends AppController
         // Pined posts sould appear in ne menu (as a page) and not show among all posts on index page by default
         $blogId = $this->request->getAttribute('currentBlog');
 
-        $query = $this->Posts->find()
+        $query = $this->Posts->find('published')
             ->contain(['Blogs']);
 
         if ($blogId) {
             $query->where(['Posts.blog_id' => $blogId]);
+            $query->where(['Posts.pinned' => false]);
         }
-
-        $query->orderBy(['Posts.created' => 'DESC']);
         
         $posts = $this->paginate($query);
 
