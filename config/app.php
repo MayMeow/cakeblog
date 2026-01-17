@@ -7,6 +7,23 @@ use Cake\Log\Engine\FileLog;
 use Cake\Mailer\Transport\MailTransport;
 use function Cake\Core\env;
 
+/**
+ * get FQDN
+ * TODO implement mechanism for controling trusted domains for protection
+ * 
+ * @param string $fallback
+ * @return string
+ */
+function getFullBaseUrl(string $fallback): string
+{
+    $host = $fallback;
+    if (array_key_exists('HTTP_HOST', $_SERVER)) {
+        $host = $_SERVER['HTTP_HOST'];
+    }
+
+    return sprintf('https://%s', $host);
+}
+
 return [
     /*
      * Debug Level:
@@ -59,7 +76,7 @@ return [
         'webroot' => 'webroot',
         'wwwRoot' => WWW_ROOT,
         //'baseUrl' => env('SCRIPT_NAME'),
-        'fullBaseUrl' => env('APP_FULL_BASE_URL', false),
+        'fullBaseUrl' => getFullBaseUrl(fallback: env('APP_FULL_BASE_URL', '')), //env('APP_FULL_BASE_URL', false),
         'imageBaseUrl' => 'img/',
         'cssBaseUrl' => 'css/',
         'jsBaseUrl' => 'js/',
