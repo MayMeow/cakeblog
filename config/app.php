@@ -489,5 +489,9 @@ return [
     'CakeBlog' => [
         'title' => 'My Blog',
         //'accent' => 'Orange' // default accent color
-    ]
+    ],
+
+    'License' => [
+        'key' => env('LICENSE_KEY', ''),
+    ],
 ];
