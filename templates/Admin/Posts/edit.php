@@ -28,6 +28,7 @@
                     echo $this->Form->control('slug');
                     echo $this->Form->control('published');
                     echo $this->Form->control('blog_id', ['options' => $blogs]);
+                    echo $this->Form->control('is_pinned');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

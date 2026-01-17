@@ -35,10 +35,7 @@ $this->end();
                 <h2><?= $this->Blog->getTitle() ?></h2>
             </a>
         </div>
-        <nav>
-            <a href="<?= $this->Url->build('/') ?>">Home</a>
-            <a href="<?= $this->Url->build(['controller' => 'Blogs', 'action' => 'index']) ?>">Blogs</a>
-        </nav>
+        <?= $this->cell('Navigation')->render() ?>
     </header>
     <main>
         <?= $this->Flash->render() ?>
@@ -47,7 +44,7 @@ $this->end();
     <footer>
         <div style="margin-bottom: 1rem;">
             <?= $this->fetch('footer') ?>
-            &copy; <?= date('Y') ?>
+            <?= $this->Blog->getTitle() ?> &copy; <?= date('Y') ?>
         </div>
         Powered by <a href="https://github.com/MayMeow/cakeblog">Sprinkle</a> 🧁
     </footer>

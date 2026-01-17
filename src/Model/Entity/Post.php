@@ -15,6 +15,7 @@ use League\CommonMark\GithubFlavoredMarkdownConverter;
  * @property string $slug
  * @property bool $published
  * @property int $blog_id
+ * @property bool $is_pinned
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
@@ -40,6 +41,7 @@ class Post extends Entity
         'created' => true,
         'modified' => true,
         'blog' => true,
+        'is_pinned' => true,
     ];
 
     protected array $_virtual = ['body_html'];
