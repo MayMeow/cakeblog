@@ -40,7 +40,7 @@ class NavigationCell extends Cell
         if ($currentBlog) {
             $pinnedPosts = $this->fetchTable('Posts')
                 ->find('pinned')
-                ->where(['blog_id' => $currentBlog]);
+                ->where(['blog_id' => $currentBlog->id]);
         }
 
         $this->set(compact('pinnedPosts', 'currentBlog'));

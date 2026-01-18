@@ -33,7 +33,7 @@ class BlogDomainMiddleware implements MiddlewareInterface
                 ->first();
 
             if ($domain) {
-                $request = $request->withAttribute('currentBlog', $domain->get('blog')->id);
+                $request = $request->withAttribute('currentBlog', $domain->get('blog'));
             }
         } catch (\Throwable $exception) {
             // If database is not ready, continue without a bound blog.

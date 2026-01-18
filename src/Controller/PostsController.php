@@ -38,7 +38,7 @@ class PostsController extends AppController
             ->contain(['Blogs']);
 
         if ($currentBlog) {
-            $query->where(['Posts.blog_id' => $currentBlog]);
+            $query->where(['Posts.blog_id' => $currentBlog->id]);
             $query->where(['Posts.pinned' => false]);
         } else {
             $query->innerJoinWith('Blogs', function ($q) {

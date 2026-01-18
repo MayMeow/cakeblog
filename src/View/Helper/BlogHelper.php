@@ -6,8 +6,6 @@ namespace App\View\Helper;
 use App\Model\Entity\Blog;
 use App\Model\Enum\AccentColor;
 use Cake\Core\Configure;
-use Cake\ORM\Locator\LocatorAwareTrait;
-use Cake\ORM\Locator\TableLocator;
 use Cake\View\Helper;
 use Cake\View\View;
 
@@ -16,7 +14,6 @@ use Cake\View\View;
  */
 class BlogHelper extends Helper
 {
-    use LocatorAwareTrait;
 
     protected ?Blog $currentBlog = null;
     protected bool $loaded = false;
@@ -27,9 +24,9 @@ class BlogHelper extends Helper
             return $this->currentBlog;
         }
 
-        $blogId = $this->getView()->getRequest()->getAttribute('currentBlog');
-        if ($blogId) {
-            $this->currentBlog = $this->fetchTable('Blogs')->get($blogId);
+        $currentBlog = $this->getView()->getRequest()->getAttribute('currentBlog');
+        if (!empty($currentBlog) && $currentBlog instanceof Blog) {
+            $this->currentBlog = $currentBlog;
         }
 
         $this->loaded = true;
