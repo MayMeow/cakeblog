@@ -21,6 +21,9 @@
                     echo $this->Form->control('title');
                     echo $this->Form->control('body');
                     echo $this->Form->control('slug');
+                    echo $this->element('custom/hint', [
+                        'text' => 'Use "home" or blog slug to show content of this page on blog landing page.',
+                    ]);
                     echo $this->Form->control('published');
                     echo $this->Form->control('blog_id', ['options' => $blogs]);
                     echo $this->Form->control('pinned');

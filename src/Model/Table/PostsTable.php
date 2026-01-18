@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use App\Model\Entity\Blog;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -107,16 +108,24 @@ class PostsTable extends Table
         return $rules;
     }
 
-    public function findPinned(SelectQuery $query, array $options): SelectQuery
+    public function findPinned(SelectQuery $query): SelectQuery
     {
         return $query->where(['Posts.published' => true])
             ->where(['Posts.pinned' => true])
             ->orderBy(['Posts.title' => 'ASC']);
     }
 
-    public function findPublished(SelectQuery $query, array $options): SelectQuery
+    public function findPublished(SelectQuery $query): SelectQuery
     {
         return $query->where(['Posts.published' => true])
             ->orderBy(['Posts.created' => 'DESC']);
+    }
+
+    public function findHomepage(SelectQuery $query, Blog $blog): SelectQuery
+    {
+        return $query
+            ->where(['Posts.published' => true])
+            ->where(['Posts.slug' => $blog->slug ?? 'home'])
+            ->where(['Posts.blog_id' => $blog->id]);
     }
 }

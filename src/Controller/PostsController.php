@@ -40,6 +40,7 @@ class PostsController extends AppController
         if ($currentBlog) {
             $query->where(['Posts.blog_id' => $currentBlog->id]);
             $query->where(['Posts.pinned' => false]);
+            $query->where(['Posts.slug NOT IN' => ['home', $currentBlog->slug]]);
         } else {
             $query->innerJoinWith('Blogs', function ($q) {
                 return $q->where(['Blogs.is_public' => true]);

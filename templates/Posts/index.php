@@ -5,9 +5,13 @@
  */
 ?>
 <div class="posts index content">
+    <div>
+        <?= $this->cell('Homepage') ?>
+    </div>
     <!-- Guest View: No Actions -->
-    <h3>🐰 <?= __('Posts') ?></h3>
-    
+
+    <?php if (!empty($posts)) : ?>
+    <h3>🐰 <?= __('Latest posts') ?></h3>
     <ul>
         <?php foreach ($posts as $post): ?>
         <li>
@@ -22,4 +26,5 @@
             <?= $this->Paginator->next('➡️' . __('next')) ?>
         </ul>
     </div>
+    <?php endif; ?>
 </div>
