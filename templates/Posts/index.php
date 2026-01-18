@@ -10,7 +10,7 @@
     </div>
     <!-- Guest View: No Actions -->
 
-    <?php if (!empty($posts)) : ?>
+    <?php if (!$posts->isEmpty()) : ?>
     <h3>🐰 <?= __('Latest posts') ?></h3>
     <ul>
         <?php foreach ($posts as $post): ?>
