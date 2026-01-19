@@ -2,6 +2,19 @@
 
 CakeBlog is a CakePHP-based multi-blog application with posts, users, and optional domain-based blog routing. It includes admin tooling, RSS output, and a Docker setup for local development.
 
+## ⚠️ Project Status: Licensing Experiment
+
+> [!NOTE]
+> Cakeblog is an open-source project, primarily intended as a technical experiment for learning how software licensing and usage restrictions work.
+
+Please note:
+
+- **Usage Limit**: By default, the app supports only 1 blog. This is intentional for testing licensing logic.
+- **Licensing**: Some parts of the project are licensed under a [COMMERCIAL-LICENSE](LICENSE-COMMERCIAL), as indicated in the comments at the top of the relevant files.
+- **Non-Commercial**: This project is not for sale and does not include any payment gateway.
+- **How to Unlock**: If you wish to use the app for more than 1 blog (up to 5), contact me directly. I can generate a free license key for you.
+- **Support Policy**: The project is provided “as-is”. I do not accept feature requests or provide active support or bug fixes for other users.
+
 ## Features
 - Multi-blog support with posts and users
 - Admin panel for managing blogs, posts, and domains
