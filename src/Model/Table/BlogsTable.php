@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Blogs Model
  *
  * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
+ * @property \App\Model\Table\ThemesTable&\Cake\ORM\Association\BelongsTo $Themes
  * @property \App\Model\Table\PostsTable&\Cake\ORM\Association\HasMany $Posts
  *
  * @method \App\Model\Entity\Blog newEmptyEntity()
@@ -51,6 +52,10 @@ class BlogsTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
             'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Themes', [
+            'foreignKey' => 'theme_id',
+            'joinType' => 'LEFT',
         ]);
         $this->hasMany('Posts', [
             'foreignKey' => 'blog_id',
@@ -97,6 +102,11 @@ class BlogsTable extends Table
         $validator
             ->boolean('is_public')
             ->notEmptyString('is_public');
+
+        $validator
+            ->scalar('theme_mode')
+            ->inList('theme_mode', ['auto', 'light', 'dark'])
+            ->allowEmptyString('theme_mode');
 
         return $validator;
     }

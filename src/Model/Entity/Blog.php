@@ -15,10 +15,13 @@ use Cake\ORM\Entity;
  * @property int $user_id
  * @property string $accent_color
  * @property bool $is_public
+ * @property int|null $theme_id
+ * @property string $theme_mode
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
  * @property \App\Model\Entity\User $user
+ * @property \App\Model\Entity\Theme|null $theme
  * @property \App\Model\Entity\Post[] $posts
  * @property \App\Model\Entity\Domain[] $domains
  */
@@ -45,6 +48,9 @@ class Blog extends Entity implements DomainInterface
         'domains' => true,
         'accent_color' => true,
         'is_public' => true,
+        'theme_id' => true,
+        'theme_mode' => true,
+        'theme' => true,
     ];
 
     public function getDomains(): array
