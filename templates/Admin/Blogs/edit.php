@@ -29,7 +29,7 @@
                     echo $this->Form->control('user_id', ['options' => $users]);
                     echo $this->Form->control('is_public');
                 ?>
-                <?= $this->element('custom/blogs_accent_selector') ?>
+                <?= $this->element('custom/blogs_theme_editor') ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
             <?= $this->Form->end() ?>
