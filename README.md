@@ -1,11 +1,13 @@
-# CakeBlog
+![](/banner.jpg)
 
-CakeBlog is a CakePHP-based multi-blog application with posts, users, and optional domain-based blog routing. It includes admin tooling, RSS output, and a Docker setup for local development.
+# MeowBlog
+
+MeowBlog is a CakePHP-based multi-blog application with posts, users, and optional domain-based blog routing. It includes admin tooling, RSS output, and a Docker setup for local development.
 
 ## ⚠️ Project Status: Licensing Experiment
 
 > [!NOTE]
-> Cakeblog is an open-source project, primarily intended as a technical experiment for learning how software licensing and usage restrictions work.
+> MeowBlog is an open-source project, primarily intended as a technical experiment for learning how software licensing and usage restrictions work.
 
 Please note:
 
