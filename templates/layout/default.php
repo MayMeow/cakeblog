@@ -46,7 +46,7 @@ $this->end();
             <?= $this->fetch('footer') ?>
             <?= $this->Blog->getTitle() ?> &copy; <?= date('Y') ?>
         </div>
-        Powered by <a href="https://github.com/MayMeow/cakeblog">Sprinkle</a> 🧁
+        Powered by <a href="https://github.com/MayMeow/cakeblog">MeowBlog</a> 🧁
     </footer>
 </body>
 
