@@ -46,6 +46,7 @@
         <div class="admin-container">
             <?= $this->Html->link('Dashboard', ['prefix' => 'Admin', 'controller' => 'Dashboard', 'action' => 'index']) ?>
             <?= $this->Html->link('Blogs', ['prefix' => 'Admin', 'controller' => 'Blogs', 'action' => 'index']) ?>
+            <?= $this->Html->link('Themes', ['prefix' => 'Admin', 'controller' => 'Themes', 'action' => 'index']) ?>
             <?= $this->Html->link('Posts', ['prefix' => 'Admin', 'controller' => 'Posts', 'action' => 'index']) ?>
             <?= $this->Html->link('Domains', ['prefix' => 'Admin', 'controller' => 'Domains', 'action' => 'index']) ?>
             <span style="float: right;">

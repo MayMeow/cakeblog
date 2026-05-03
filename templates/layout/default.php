@@ -3,9 +3,7 @@ $cakeDescription = 'My Blog';
 
 $this->start('css');
 ?>
-<style>
-<?= $this->Blog->getAccentColor() ?>
-</style>
+<?= $this->Theme->renderStyles() ?>
 <?php
 $this->end();
 ?>
@@ -28,7 +26,7 @@ $this->end();
     <?= $this->fetch('script') ?>
 </head>
 
-<body>
+<body class="<?= $this->Theme->getBodyClass() ?>">
     <header>
         <div class="header">
             <a class="title" href="<?= $this->Url->build('/') ?>">

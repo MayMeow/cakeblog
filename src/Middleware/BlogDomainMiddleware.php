@@ -29,7 +29,7 @@ class BlogDomainMiddleware implements MiddlewareInterface
             $domainTable = TableRegistry::getTableLocator()->get('Domains');
             $domain = $domainTable->find()
                 ->where(['domain' => $host])
-                ->contain(['Blogs'])
+                ->contain(['Blogs' => ['Themes']])
                 ->first();
 
             if ($domain) {
