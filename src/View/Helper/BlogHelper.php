@@ -92,4 +92,13 @@ class BlogHelper extends Helper
         $blog = $this->getBlog();
         return $blog ? $blog->mastodon_link : null;
     }
+
+    public function getHomepageType(): \App\Model\Enum\HomepageType
+    {
+        $blog = $this->getBlog();
+        if ($blog && !empty($blog->homepage_type)) {
+            return \App\Model\Enum\HomepageType::fromName($blog->homepage_type);
+        }
+        return \App\Model\Enum\HomepageType::HomeLatest;
+    }
 }

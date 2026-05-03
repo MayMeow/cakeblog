@@ -20,6 +20,7 @@ use Cake\ORM\Entity;
  * @property string|null $custom_css
  * @property string|null $custom_header
  * @property string|null $mastodon_link
+ * @property string $homepage_type
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
@@ -57,6 +58,7 @@ class Blog extends Entity implements DomainInterface
         'custom_css' => true,
         'custom_header' => true,
         'mastodon_link' => true,
+        'homepage_type' => true,
     ];
 
     public function getDomains(): array

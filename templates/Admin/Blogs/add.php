@@ -23,6 +23,12 @@
                     echo $this->Form->control('slug');
                     echo $this->Form->control('user_id', ['options' => $users]);
                     echo $this->Form->control('is_public');
+
+                    $homepageTypes = [];
+                    foreach (\App\Model\Enum\HomepageType::cases() as $case) {
+                        $homepageTypes[$case->value] = $case->label();
+                    }
+                    echo $this->Form->control('homepage_type', ['options' => $homepageTypes]);
                     echo $this->Form->control('custom_header', ['type' => 'textarea']);
                     echo $this->Form->control('custom_css', ['type' => 'textarea']);
                     echo $this->Form->control('mastodon_link');

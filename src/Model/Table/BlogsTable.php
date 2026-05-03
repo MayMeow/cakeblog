@@ -109,6 +109,11 @@ class BlogsTable extends Table
             ->allowEmptyString('theme_mode');
 
         $validator
+            ->scalar('homepage_type')
+            ->inList('homepage_type', array_map(fn($case) => $case->value, \App\Model\Enum\HomepageType::cases()))
+            ->notEmptyString('homepage_type');
+
+        $validator
             ->scalar('custom_css')
             ->allowEmptyString('custom_css');
 
