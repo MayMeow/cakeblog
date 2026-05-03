@@ -28,6 +28,9 @@
                     echo $this->Form->control('slug');
                     echo $this->Form->control('user_id', ['options' => $users]);
                     echo $this->Form->control('is_public');
+                    echo $this->Form->control('custom_header', ['type' => 'textarea']);
+                    echo $this->Form->control('custom_css', ['type' => 'textarea']);
+                    echo $this->Form->control('mastodon_link');
                 ?>
                 <?= $this->element('custom/blogs_theme_editor') ?>
             </fieldset>

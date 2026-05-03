@@ -74,4 +74,22 @@ class BlogHelper extends Helper
             $blogAccentColorEnum->value
         );
     }
+
+    public function getCustomCss(): ?string
+    {
+        $blog = $this->getBlog();
+        return $blog ? $blog->custom_css : null;
+    }
+
+    public function getCustomHeader(): ?string
+    {
+        $blog = $this->getBlog();
+        return $blog ? $blog->custom_header : null;
+    }
+
+    public function getMastodonLink(): ?string
+    {
+        $blog = $this->getBlog();
+        return $blog ? $blog->mastodon_link : null;
+    }
 }

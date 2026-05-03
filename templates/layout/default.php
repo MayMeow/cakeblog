@@ -21,6 +21,18 @@ $this->end();
 
     <?= $this->Html->css(['maymeow']) ?>
 
+    <?php if ($this->Blog->getCustomCss()): ?>
+        <style>
+            <?= $this->Blog->getCustomCss() ?>
+        </style>
+    <?php endif; ?>
+
+    <?php if ($this->Blog->getMastodonLink()): ?>
+        <meta name="fediverse:creator" content="<?= h($this->Blog->getMastodonLink()) ?>">
+    <?php endif; ?>
+
+    <?= $this->Blog->getCustomHeader() ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>

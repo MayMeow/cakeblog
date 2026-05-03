@@ -108,6 +108,19 @@ class BlogsTable extends Table
             ->inList('theme_mode', ['auto', 'light', 'dark'])
             ->allowEmptyString('theme_mode');
 
+        $validator
+            ->scalar('custom_css')
+            ->allowEmptyString('custom_css');
+
+        $validator
+            ->scalar('custom_header')
+            ->allowEmptyString('custom_header');
+
+        $validator
+            ->scalar('mastodon_link')
+            ->maxLength('mastodon_link', 255)
+            ->allowEmptyString('mastodon_link');
+
         return $validator;
     }
 
