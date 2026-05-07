@@ -210,3 +210,7 @@ ul.blog-posts li span {
 ul.blog-posts li a:visited {
     color: var(--visited-color);
 }
+
+ul li:not([class]) {
+    line-height: 1.8;
+}
