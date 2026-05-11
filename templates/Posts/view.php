@@ -48,7 +48,7 @@
                     <?= $this->Form->control('author_email', [
                         'type' => 'email',
                         'label' => __('Email'),
-                        'required' => true,
+                        'required' => false,
                         'id' => 'comment-author-email',
                     ]) ?>
                     <?= $this->Form->control('author_website', [

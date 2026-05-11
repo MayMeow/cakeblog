@@ -229,7 +229,7 @@ ul li:not([class]) {
 
 .comment {
     padding: 1rem 0;
-    border-bottom: 1px solid var(--code-background-color);
+    border-bottom: 1px solid var(--blockquote-color);
 }
 
 .comment:last-child {

@@ -21,7 +21,7 @@ class CreateComments extends BaseMigration
         $table->addColumn('author_email', 'string', [
             'default' => null,
             'limit' => 255,
-            'null' => false,
+            'null' => true,
         ]);
         $table->addColumn('author_website', 'string', [
             'default' => null,

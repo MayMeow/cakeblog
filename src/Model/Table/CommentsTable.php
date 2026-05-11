@@ -70,8 +70,9 @@ class CommentsTable extends Table
         $validator
             ->email('author_email')
             ->maxLength('author_email', 255)
-            ->requirePresence('author_email', 'create')
-            ->notEmptyString('author_email');
+            ->allowEmptyArray('author_email');
+            //  ->requirePresence('author_email', 'create')
+            // ->notEmptyString('author_email');
 
         $validator
             ->scalar('author_website')
