@@ -16,10 +16,12 @@ use League\CommonMark\GithubFlavoredMarkdownConverter;
  * @property bool $published
  * @property int $blog_id
  * @property bool $pinned
+ * @property bool $comments_enabled
  * @property \Cake\I18n\DateTime $created
  * @property \Cake\I18n\DateTime $modified
  *
  * @property \App\Model\Entity\Blog $blog
+ * @property \App\Model\Entity\Comment[] $comments
  */
 class Post extends Entity
 {
@@ -42,6 +44,8 @@ class Post extends Entity
         'modified' => true,
         'blog' => true,
         'pinned' => true,
+        'comments_enabled' => true,
+        'comments' => true,
     ];
 
     protected array $_virtual = ['body_html'];

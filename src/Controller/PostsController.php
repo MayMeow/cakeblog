@@ -22,7 +22,7 @@ class PostsController extends AppController
     public function beforeFilter(\Cake\Event\EventInterface $event)
     {
         parent::beforeFilter($event);
-        $this->Authentication->addUnauthenticatedActions(['index', 'view']);
+        $this->Authentication->addUnauthenticatedActions(['index', 'view', 'addComment']);
     }
 
     /**
@@ -46,6 +46,13 @@ class PostsController extends AppController
                 return $q->where(['Blogs.is_public' => true]);
             });
         }
+
+        // Add approved comment count
+        $query->select($this->Posts)
+            ->select(['comment_count' => $this->Posts->Comments->find()
+                ->where(['Comments.post_id = Posts.id', 'Comments.is_approved' => true])
+                ->select($this->Posts->Comments->find()->func()->count('Comments.id'))
+            ]);
         
         $posts = $this->paginate($query);
 
@@ -62,7 +69,47 @@ class PostsController extends AppController
      */
     public function view($id = null)
     {
+        $post = $this->Posts->get($id, contain: [
+            'Blogs',
+            'Comments' => function ($q) {
+                return $q->find('approved');
+            },
+        ]);
+
+        $comment = $this->Posts->Comments->newEmptyEntity();
+
+        $this->set(compact('post', 'comment'));
+    }
+
+    /**
+     * Add a comment to a post.
+     *
+     * @param string|null $id Post id.
+     * @return \Cake\Http\Response|null Redirects back to the post.
+     */
+    public function addComment($id = null)
+    {
+        $this->request->allowMethod(['post']);
+
         $post = $this->Posts->get($id, contain: ['Blogs']);
-        $this->set(compact('post'));
+
+        if (!$post->comments_enabled) {
+            $this->Flash->error(__('Comments are not allowed on this post.'));
+
+            return $this->redirect(['action' => 'view', $post->id]);
+        }
+
+        $comment = $this->Posts->Comments->newEmptyEntity();
+        $comment = $this->Posts->Comments->patchEntity($comment, $this->request->getData());
+        $comment->post_id = (int)$post->id;
+        $comment->is_approved = false;
+
+        if ($this->Posts->Comments->save($comment)) {
+            $this->Flash->success(__('Your comment has been submitted and is awaiting approval.'));
+        } else {
+            $this->Flash->error(__('Your comment could not be saved. Please check for errors and try again.'));
+        }
+
+        return $this->redirect(['action' => 'view', $post->id]);
     }
 }

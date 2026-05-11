@@ -27,6 +27,10 @@
                     echo $this->Form->control('published');
                     echo $this->Form->control('blog_id', ['options' => $blogs]);
                     echo $this->Form->control('pinned');
+                    echo $this->Form->control('comments_enabled', [
+                        'label' => __('Allow Comments'),
+                        'checked' => true,
+                    ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

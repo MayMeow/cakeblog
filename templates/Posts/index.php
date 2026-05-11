@@ -22,6 +22,9 @@ $homepageType = $this->Blog->getHomepageType();
                 <?php foreach ($posts as $post): ?>
                     <li>
                         <?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?>
+                        <?php if (isset($post->comment_count) && $post->comment_count > 0): ?>
+                            <span class="comment-count" title="<?= __('Comments') ?>">💬 <?= (int)$post->comment_count ?></span>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -32,6 +35,9 @@ $homepageType = $this->Blog->getHomepageType();
                         <span class="date"
                             style="margin-right: 1rem; color: var(--text-color); opacity: 0.7;"><?= h($post->created->format('Y-m-d')) ?></span>
                         <?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?>
+                        <?php if (isset($post->comment_count) && $post->comment_count > 0): ?>
+                            <span class="comment-count" title="<?= __('Comments') ?>">💬 <?= (int)$post->comment_count ?></span>
+                        <?php endif; ?>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -39,7 +45,12 @@ $homepageType = $this->Blog->getHomepageType();
             <div class="posts-excerpt">
                 <?php foreach ($posts as $post): ?>
                     <article style="margin-bottom: 2rem;">
-                        <h3><?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?></h3>
+                        <h3>
+                            <?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?>
+                            <?php if (isset($post->comment_count) && $post->comment_count > 0): ?>
+                                <span class="comment-count" title="<?= __('Comments') ?>">💬 <?= (int)$post->comment_count ?></span>
+                            <?php endif; ?>
+                        </h3>
                         <div class="excerpt" style="margin-top: 0.5rem;">
                             <?= \Cake\Utility\Text::truncate(strip_tags($post->body_html), 200, ['exact' => false, 'html' => false]) ?>
                         </div>
@@ -51,7 +62,12 @@ $homepageType = $this->Blog->getHomepageType();
             <div class="posts-full">
                 <?php foreach ($posts as $post): ?>
                     <article style="margin-bottom: 3rem;">
-                        <h2><?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?></h2>
+                        <h2>
+                            <?= $this->Html->link($post->title, ['action' => 'view', $post->id]) ?>
+                            <?php if (isset($post->comment_count) && $post->comment_count > 0): ?>
+                                <span class="comment-count" title="<?= __('Comments') ?>">💬 <?= (int)$post->comment_count ?></span>
+                            <?php endif; ?>
+                        </h2>
                         <div class="body" style="margin-top: 1rem;">
                             <?= $post->body_html ?>
                         </div>
