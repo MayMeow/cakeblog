@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller\Admin;
 
 use App\Controller\Admin\AppController;
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 
 /**
  * Comments Controller
@@ -67,5 +68,38 @@ class CommentsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Reveal a comment's encrypted email after password verification.
+     * GET: shows a password form.
+     * POST: verifies password and displays the decrypted email.
+     *
+     * @param string|null $id Comment id.
+     * @return void
+     */
+    public function revealEmail($id = null): void
+    {
+        $this->request->allowMethod(['get', 'post']);
+
+        $comment = $this->Comments->get($id, contain: ['Posts']);
+        $revealedEmail = null;
+
+        if ($this->request->is('post')) {
+            $password = (string)$this->request->getData('password', '');
+
+            // Get the currently logged-in user's hashed password
+            $identity = $this->Authentication->getIdentity();
+            $user = $this->fetchTable('Users')->get($identity->getIdentifier());
+
+            $hasher = new DefaultPasswordHasher();
+            if ($hasher->check($password, $user->password)) {
+                $revealedEmail = $comment->getDecryptedEmail() ?? __('(no email stored)');
+            } else {
+                $this->Flash->error(__('Invalid password. Please try again.'));
+            }
+        }
+
+        $this->set(compact('comment', 'revealedEmail'));
     }
 }
