@@ -214,3 +214,86 @@ ul.blog-posts li a:visited {
 ul li:not([class]) {
     line-height: 1.8;
 }
+
+/* === Comments === */
+
+.comments-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 2px dashed var(--blockquote-color);
+}
+
+.comments-heading {
+    margin-bottom: 1.5rem;
+}
+
+.comment {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--blockquote-color);
+}
+
+.comment:last-child {
+    border-bottom: none;
+}
+
+.comment-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.comment-author {
+    color: var(--heading-color);
+}
+
+.comment-author a {
+    color: var(--link-color);
+}
+
+.comment-date {
+    font-size: 0.85em;
+    color: var(--blockquote-color);
+}
+
+.comment-body {
+    line-height: 1.6;
+}
+
+/* Comment form */
+
+.comment-form-section {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 2px dashed var(--blockquote-color);
+}
+
+.comment-note {
+    font-size: 0.9em;
+    color: var(--blockquote-color);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+}
+
+.comment-form-fields label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: var(--heading-color);
+}
+
+.comments-closed {
+    margin-top: 2rem;
+    color: var(--blockquote-color);
+    font-style: italic;
+}
+
+/* Comment count badge */
+
+.comment-count {
+    font-size: 0.8em;
+    color: var(--blockquote-color);
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}

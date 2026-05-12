@@ -126,6 +126,10 @@ class BlogsTable extends Table
             ->maxLength('mastodon_link', 255)
             ->allowEmptyString('mastodon_link');
 
+        $validator
+            ->boolean('comments_enabled')
+            ->allowEmptyString('comments_enabled');
+
         return $validator;
     }
 

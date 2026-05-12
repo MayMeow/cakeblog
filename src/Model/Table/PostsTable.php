@@ -13,6 +13,7 @@ use Cake\Validation\Validator;
  * Posts Model
  *
  * @property \App\Model\Table\BlogsTable&\Cake\ORM\Association\BelongsTo $Blogs
+ * @property \App\Model\Table\CommentsTable&\Cake\ORM\Association\HasMany $Comments
  *
  * @method \App\Model\Entity\Post newEmptyEntity()
  * @method \App\Model\Entity\Post newEntity(array $data, array $options = [])
@@ -52,6 +53,10 @@ class PostsTable extends Table
             'foreignKey' => 'blog_id',
             'joinType' => 'INNER',
         ]);
+        $this->hasMany('Comments', [
+            'foreignKey' => 'post_id',
+            'dependent' => true,
+        ]);
     }
 
     /**
@@ -89,6 +94,10 @@ class PostsTable extends Table
         $validator
             ->integer('blog_id')
             ->notEmptyString('blog_id');
+
+        $validator
+            ->boolean('comments_enabled')
+            ->allowEmptyString('comments_enabled');
 
         return $validator;
     }

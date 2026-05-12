@@ -37,6 +37,9 @@
                     echo $this->Form->control('custom_header', ['type' => 'textarea']);
                     echo $this->Form->control('custom_css', ['type' => 'textarea']);
                     echo $this->Form->control('mastodon_link');
+                    echo $this->Form->control('comments_enabled', [
+                        'label' => __('Enable Comments by Default'),
+                    ]);
                 ?>
                 <?= $this->element('custom/blogs_theme_editor') ?>
             </fieldset>
